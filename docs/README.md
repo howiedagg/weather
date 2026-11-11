@@ -38,8 +38,8 @@
 
 | 項目 | 狀態 |
 | --- | --- |
-| 全前端的可操作視覺範本 | 已完成；原為私人部署，現行方案改採 GitHub Pages。 |
-| 前端推送後自動部署 | 已加入流程；Pages 是否啟用與首次成功狀態，以 Actions 為準。 |
+| 全前端的可操作視覺範本 | 已完成；GitHub Pages 已於 2026-11-11 成功上線。 |
+| 前端推送後自動部署 | 流程已上傳並完成首次成功部署；首頁及四個資源的 HTTP 回應與內容已確認。 |
 | 三種數值共用時間範圍、縮放與平移 | 已實作；目前主要以示範資料展示。 |
 | 今天、過去一週、未來 3 天與一週的快速定位 | 已實作。 |
 | 桌面與手機尺寸排版 | 已做瀏覽器畫面檢查；實機手勢仍待完整驗證。 |
@@ -50,7 +50,7 @@
 
 ## 範本入口
 
-- [GitHub Pages](https://howiedagg.github.io/weather/)：公開網站入口，首次啟用及部署成功後可使用；[部署狀態](https://github.com/howiedagg/weather/actions/workflows/pages.yml)。
+- [GitHub Pages](https://howiedagg.github.io/weather/)：已上線的公開網站入口；[部署狀態](https://github.com/howiedagg/weather/actions/workflows/pages.yml)。無須 ChatGPT 登入，目前預設仍為示範資料。
 - [初版私人預覽網站（歷史入口）](https://weather-flow-how-1111.howie513579.chatgpt.site/)：需要有權限的 ChatGPT 帳號登入；與 GitHub Pages 的部署互相獨立。
 - [第一版範本說明與截圖](04-第一版範本.md)
 - [專案 README](../README.md)

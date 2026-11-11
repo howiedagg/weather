@@ -21,7 +21,7 @@
 
 ## 預覽
 
-GitHub Pages 入口：[howiedagg.github.io/weather](https://howiedagg.github.io/weather/)。首次使用需先啟用 Pages 並成功部署；上線狀態以 [Actions](https://github.com/howiedagg/weather/actions/workflows/pages.yml) 為準。
+GitHub Pages 入口：[howiedagg.github.io/weather](https://howiedagg.github.io/weather/)，已於 2026-11-11 成功上線。首頁與四個前端資源均回傳 HTTP 200，內容與本機一致；[首次成功部署](https://github.com/howiedagg/weather/actions/runs/42990462296)。最新狀態見 [Actions](https://github.com/howiedagg/weather/actions/workflows/pages.yml)。
 
 在專案目錄執行 `python -m http.server 4173 --directory dist`，開啟 `http://localhost:4173`。
 
