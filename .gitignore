@@ -5,9 +5,8 @@
 *.pem
 *.key
 
-# Keep Site identity, ignore checkout-local runtime state
-.openai/*
-!.openai/hosting.json
+# Local hosting state
+.openai/
 
 # Dependencies, caches, logs, and generated archives
 node_modules/
