@@ -21,7 +21,20 @@
 
 ## 預覽
 
+GitHub Pages 入口：[howiedagg.github.io/weather](https://howiedagg.github.io/weather/)。首次使用需先啟用 Pages 並成功部署；上線狀態以 [Actions](https://github.com/howiedagg/weather/actions/workflows/pages.yml) 為準。
+
 在專案目錄執行 `python -m http.server 4173 --directory dist`，開啟 `http://localhost:4173`。
+
+## 自動部署到 GitHub Pages
+
+1. 在 [Settings → Pages](https://github.com/howiedagg/weather/settings/pages) 的「Build and deployment → Source」選擇 **GitHub Actions**（首次設定一次）。
+2. 修改前端後推送到 `main`；變更 `dist/**`、`core.test.mjs` 或部署流程本身時，會自動執行語法檢查、核心測試並部署。
+3. 只修改 `docs/`、README 等文件不會觸發部署。需要手動發布時，在 [Actions](https://github.com/howiedagg/weather/actions/workflows/pages.yml) 選擇 **Run workflow**，分支使用 `main`。
+4. 手機使用同一個 Pages 網址，部署成功後重新整理即可看到新版。只在電腦上改檔案、不推送，線上網站不會更新。
+
+流程只發布 `dist/`，不把文件、測試或部署設定當作網站內容。網站公開、不需要 ChatGPT 登入，電腦也不必保持開機。官方授權碼仍由使用者在分頁內自行輸入，不寫入 GitHub 或部署設定。GitHub Pages 不會代為持續收集氣象資料。
+
+流程檔：[.github/workflows/pages.yml](.github/workflows/pages.yml)。首次部署若因 Pages 尚未啟用而失敗，完成來源設定後，可在該次執行選擇 **Re-run failed jobs**。
 
 ## 操作
 
