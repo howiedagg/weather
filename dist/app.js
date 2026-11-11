@@ -81,7 +81,7 @@ function frame(time) {
   drawNavigator(); updateViewUI();
   if (state.motion || yAnimating) requestDraw(); else state.lastFrame = 0;
 }
-function text(context, value, x, y, color = '#a2abb5', align = 'left', font = '10px "DM Sans", "Noto Sans TC", sans-serif') {
+function text(context, value, x, y, color = '#a2abb5', align = 'left', font = '11px "DM Sans", "Noto Sans TC", sans-serif') {
   context.fillStyle = color; context.font = font; context.textAlign = align; context.textBaseline = 'middle'; context.fillText(value, x, y);
 }
 function line(context, x1, y1, x2, y2, color, dash = []) {
@@ -159,7 +159,7 @@ function drawChart(a) {
   ctx.beginPath(); ctx.arc(l + 3, humidityTop - 9, 2.4, 0, Math.PI * 2); ctx.fillStyle = colors.humidity; ctx.fill();
   text(ctx, '濕度', l + 13, humidityTop - 9, '#8b98a6', 'left', '10px "Noto Sans TC",sans-serif');
   text(ctx, '%', r, humidityTop - 9, '#a8b1ba', 'right');
-  for (const v of [30, 60, 90]) { line(ctx, l, hy(v), r, hy(v), '#f3f5f7'); text(ctx, String(v), l - 13, hy(v), '#b1bac3', 'right', '9px "DM Sans",sans-serif'); }
+  for (const v of [30, 60, 90]) { line(ctx, l, hy(v), r, hy(v), '#f3f5f7'); text(ctx, String(v), l - 13, hy(v), '#b1bac3', 'right', '10px "DM Sans",sans-serif'); }
   const possibleSteps = [HOUR / 4, HOUR / 2, HOUR, 2 * HOUR, 3 * HOUR, 6 * HOUR, 12 * HOUR, DAY, 2 * DAY];
   const tickStep = possibleSteps.find(v => state.view.span / v <= (w < 500 ? 4.2 : 7)) || 2 * DAY;
   const offset = 8 * HOUR;
