@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7f9"><meta name="description" content="以今天為中心，輕輕滑動，探索溫度、體感與濕度。">
+  <title>氣序 · Weather Flow</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<svg class="sprite" xmlns="http://www.w3.org/2000/svg"><defs>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-settings" viewBox="0 0 24 24"><path d="M4 7h16M4 17h16"/><circle cx="9" cy="7" r="3"/><circle cx="15" cy="17" r="3"/></symbol>
+  <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3S5 11 5 15a7 7 0 0 0 14 0c0-4-7-12-7-12Z"/></symbol>
+  <symbol id="i-feel" viewBox="0 0 24 24"><path d="M8 14.5V6a4 4 0 0 1 8 0v8.5a6 6 0 1 1-8 0ZM12 8v10"/></symbol>
+  <symbol id="i-now" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v.1"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5M6 6a8 8 0 0 1 13 3M5 15a8 8 0 0 0 13 3"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+</defs></svg>
+
+<div class="app-shell">
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="氣序首頁"><span class="brand-mark"><svg><use href="#i-sun"/></svg></span><span>氣序<span class="brand-en">WEATHER FLOW</span></span></a>
+    <div class="header-actions"><button id="data-status" class="status-pill" title="資料來源與設定"><span class="status-dot"></span><span id="status-label">示範資料</span></button><button class="icon-button" id="settings" title="資料設定" aria-label="資料設定"><svg><use href="#i-settings"/></svg></button></div>
+  </header>
+
+  <main>
+    <section class="overview" aria-label="目前天氣">
+      <div class="overview-main">
+        <div class="place-row"><svg><use href="#i-pin"/></svg><label class="place-picker"><span class="sr-only">選擇地點</span><select id="location"><option value="taipei">臺北市 · 中正區</option><option value="newtaipei">新北市 · 板橋區</option><option value="taichung">臺中市 · 西區</option><option value="tainan">臺南市 · 中西區</option><option value="kaohsiung">高雄市 · 楠梓區</option><option value="hualien">花蓮縣 · 花蓮市</option></select><svg><use href="#i-down"/></svg></label></div>
+        <div class="current-row"><div id="weather-art" class="weather-art" aria-hidden="true"><div class="sun-disc"></div><div class="cloud cloud-back"></div><div class="cloud cloud-front"></div></div><div class="current-temperature"><span id="current-temp">—</span><span class="degree">°</span></div></div>
+        <div class="today-meta"><span id="today-date"></span><span class="meta-divider"></span><span id="current-time"></span><span id="current-kind" class="subtle-tag">示範</span></div>
+      </div>
+      <div class="current-details">
+        <div class="metric-summary feel-summary"><span class="summary-label"><svg><use href="#i-feel"/></svg>體感</span><span class="summary-value"><span id="current-feels">—</span><small>°</small></span><span id="feel-note" class="summary-note">—</span></div>
+        <div class="summary-separator"></div>
+        <div class="metric-summary humidity-summary"><span class="summary-label"><svg><use href="#i-drop"/></svg>濕度</span><span class="summary-value"><span id="current-humidity">—</span><small>%</small></span><span id="humidity-note" class="summary-note">相對濕度</span></div>
+      </div>
+      <div class="overview-stamp"><span class="tiny-dot"></span>YOUR DAY, AT A GLANCE</div>
+    </section>
+
+    <section class="timeline-card" aria-label="天氣時間軸">
+      <div class="timeline-toolbar"><div class="period-selector" role="group" aria-label="快速選擇時間"><button data-period="past">過去一週</button><button data-period="today" class="active" aria-pressed="true">今天</button><button data-period="three">3 天</button><button data-period="week">一週</button></div><div class="timeline-tools"><button id="previous" class="icon-button small" aria-label="往前移動時間" title="往前"><svg class="flip"><use href="#i-chevron"/></svg></button><span id="range-label" class="range-label"></span><button id="next" class="icon-button small" aria-label="往後移動時間" title="往後"><svg><use href="#i-chevron"/></svg></button><button id="go-now" class="now-button" title="回到現在"><svg><use href="#i-now"/></svg><span>現在</span></button></div></div>
+
+      <div class="chart-head"><div class="chart-legend" role="group" aria-label="顯示曲線"><button class="legend-item" data-metric="temp" aria-pressed="true"><i class="legend-line orange"></i>溫度</button><button class="legend-item" data-metric="feels" aria-pressed="true"><i class="legend-line purple"></i>體感</button></div><span class="unit-label">°C</span></div>
+      <div class="chart-wrap" id="chart-wrap" tabindex="0" role="application" aria-label="可縮放天氣圖。滾輪縮放，左右拖曳移動；鍵盤加減號縮放、方向鍵移動、Home 回到現在。"><canvas id="weather-chart" aria-label="溫度、體感及濕度趨勢圖"></canvas><div id="chart-tooltip" class="chart-tooltip" hidden></div><div id="no-data" class="no-data" hidden>此時段尚無資料</div><div class="gesture-hint" id="gesture-hint"><span class="gesture-icon">↔</span><span>拖曳移動 · 滾動縮放</span></div></div>
+
+      <div class="zoom-bar"><div class="zoom-controls"><button class="icon-button small" id="zoom-out" aria-label="縮小時間軸" title="縮小"><svg><use href="#i-minus"/></svg></button><input id="zoom-slider" type="range" min="0" max="1000" value="560" aria-label="時間軸縮放"><button class="icon-button small" id="zoom-in" aria-label="放大時間軸" title="放大"><svg><use href="#i-plus"/></svg></button><output id="zoom-label">24 小時</output></div><span class="chart-source"><i></i>觀測<span class="source-dash"></span>預報</span></div>
+
+      <div class="navigator" id="navigator" role="group" aria-label="兩週總覽"><canvas id="navigator-chart"></canvas><div id="navigator-window" class="navigator-window"><button id="nav-left" class="nav-handle" aria-label="調整開始時間"></button><div class="navigator-grip"><i></i><i></i><i></i></div><button id="nav-right" class="nav-handle" aria-label="調整結束時間"></button></div></div>
+      <div class="navigator-labels"><span id="nav-start"></span><button id="nav-today">今天</button><span id="nav-end"></span></div>
+    </section>
+
+    <div class="bottom-row"><div class="data-note"><span class="tiny-dot"></span><span id="data-note">示範走勢 · 非即時氣象</span></div><button class="info-button" id="info"><svg><use href="#i-info"/></svg><span>資料說明</span></button></div>
+  </main>
+  <footer><span>氣序</span><span>留一點空間，給天氣。</span><a href="https://opendata.cwa.gov.tw/" target="_blank" rel="noopener noreferrer">中央氣象署 <svg><use href="#i-arrow"/></svg></a></footer>
+</div>
+
+<dialog id="settings-dialog"><form id="settings-form"><div class="dialog-head"><div><span class="eyebrow">DATA SOURCE</span><h2>接上真實天氣</h2></div><button type="button" class="icon-button" data-close aria-label="關閉"><svg><use href="#i-close"/></svg></button></div><p class="dialog-copy">輸入氣象署授權碼，直接從這個瀏覽器讀取官方資料。</p><label for="api-key" class="field-label">API 授權碼</label><input id="api-key" type="password" placeholder="CWA-…" autocomplete="off" spellcheck="false"><p class="field-hint">僅供本次分頁使用，不會上傳至本站或寫入儲存空間。</p><div class="settings-info"><svg><use href="#i-info"/></svg><p>歷史體感為估算；一週預報以原始時段呈現。若官方下載不允許瀏覽器直接讀取，會顯示缺少的時段。</p></div><p id="connection-status" class="connection-status" role="status" aria-live="polite"></p><div class="dialog-actions"><button type="button" id="use-demo" class="secondary-button">使用示範</button><button type="submit" id="connect" class="primary-button">連接資料 <svg><use href="#i-arrow"/></svg></button></div><a class="api-link" href="https://opendata.cwa.gov.tw/user/authkey" target="_blank" rel="noopener noreferrer">取得免費授權碼 ↗</a></form></dialog>
+<dialog id="info-dialog"><div class="dialog-head"><div><span class="eyebrow">A LITTLE CONTEXT</span><h2>每條線，都有依據</h2></div><button class="icon-button" data-close aria-label="關閉"><svg><use href="#i-close"/></svg></button></div><div class="info-items"><div><i class="legend-line orange"></i><p><strong>溫度</strong><span>測站觀測與鄉鎮預報；一週預報可查看高低範圍。</span></p></div><div><i class="legend-line purple"></i><p><strong>體感</strong><span>未來採官方預報；歷史依氣溫、濕度與風速估算。長期預報的陰影表示最高與最低體感範圍。</span></p></div><div><i class="legend-line blue"></i><p><strong>濕度</strong><span>相對濕度，使用下方獨立的百分比刻度。</span></p></div></div><p class="dialog-copy">實線為觀測，虛線為預報。曲線連線用來閱讀趨勢，不代表新增的測量；放大不會增加原始資料精度。</p><p id="source-detail" class="source-detail">目前為合成示範資料，所有數字皆非真實觀測或預報。</p><p class="source-detail">全前端：沒有背景收集服務，關閉網頁後不會持續記錄。設定中的授權碼只傳送至氣象署官方網域。</p><div class="dialog-actions"><button class="primary-button" data-close>知道了</button></div></dialog>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script type="module" src="./app.js"></script>
+</body>
+</html>
