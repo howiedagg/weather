@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f6f7f4"><title>氣序 · 資料選擇</title><link rel="stylesheet" href="./style.css"><script src="./app.js" defer></script></head>
+<body>
+<header class="app-header"><a class="brand" href="./"><span aria-hidden="true">◒</span> 氣序 <small>資料選擇</small></a><div class="header-actions"><button id="review" class="button quiet" type="button">查看選擇</button><button id="tools" class="button quiet" type="button">備註與文件</button><button id="save" class="button primary" type="button" disabled>儲存</button></div></header>
+<main class="page">
+  <div class="page-title"><div><h1>選擇想顯示的資料</h1><p>主畫面先看重點，詳細頁保留更多。</p></div><span id="save-status" role="status" aria-live="polite">載入中…</span></div>
+  <nav id="section-tabs" class="section-tabs" aria-label="三個區塊"></nav>
+  <div class="workspace">
+    <section class="picker" aria-label="資料清單">
+      <div class="list-toolbar"><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" aria-label="搜尋資料" placeholder="搜尋資料"></label><label class="selected-filter"><input id="selected-only" type="checkbox">只看已選</label><span id="field-count"></span></div>
+      <div class="column-head"><span>資料／原始值 <small>點名稱看說明</small></span><span>主畫面</span><span>詳細頁</span></div>
+      <div id="groups"></div><p id="no-results" class="empty" hidden>沒有符合的資料。</p>
+      <label class="section-note"><span>這個區塊的備註</span><textarea id="section-note" rows="2" maxlength="2000" placeholder="補充這個區塊的想法…"></textarea></label>
+    </section>
+    <aside class="inspector" aria-labelledby="inspector-title"><div class="inspector-header"><h2 id="inspector-title">資料說明</h2><button id="coverage-toggle" class="text-button" type="button">看整區間隔</button></div><div id="field-detail"></div></aside>
+  </div>
+  <footer><span>原始值為已核對快照，非即時天氣。</span><span id="catalog-version"></span></footer>
+</main>
+<dialog id="coverage-dialog" aria-labelledby="coverage-title"><div class="dialog-head"><h2 id="coverage-title">時間間隔與範圍</h2><button data-close class="close" type="button" aria-label="關閉時間範圍">×</button></div><p class="dialog-hint">以各產品這版預報的起點為 0 小時，並非從此刻倒數。不同產品可以重疊。</p><div id="coverage-content"></div></dialog>
+<dialog id="tools-dialog" aria-labelledby="tools-title"><div class="dialog-head"><h2 id="tools-title">備註與文件</h2><button data-close class="close" type="button" aria-label="關閉備註與文件">×</button></div><label class="section-note"><span>整體備註</span><textarea id="global-note" rows="5" maxlength="4000" placeholder="三個區塊共同的想法…"></textarea></label><div class="document-actions"><a id="plan-link" class="button secondary" href="/api/plan" download="畫面資料規劃.md">下載已儲存的規劃</a><button id="refresh-catalog" class="button secondary" type="button">更新資料說明</button></div><p class="dialog-hint">勾選與備註保留在專案中。儲存會一起更新規劃 Markdown 和資料說明。</p></dialog>
+<dialog id="review-dialog" aria-labelledby="review-title"><div class="dialog-head"><h2 id="review-title">三區選擇清單</h2><button data-close class="close" type="button" aria-label="關閉選擇清單">×</button></div><textarea id="review-text" rows="17" readonly aria-label="完整選擇與備註"></textarea><div class="document-actions"><span id="copy-status" role="status"></span><button id="copy" class="button secondary" type="button">複製</button><button id="save-review" class="button primary" type="button">儲存選擇</button></div></dialog>
+</body></html>

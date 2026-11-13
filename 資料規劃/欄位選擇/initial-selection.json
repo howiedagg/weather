@@ -1,0 +1,24 @@
+{
+  "v": 1,
+  "globalNote": "",
+  "sections": {
+    "now": {
+      "home": ["temp", "feels", "weather", "pop", "location", "time", "rh", "version"],
+      "detail": ["temp", "feels", "rh", "rain", "sunrise", "sunset", "weather", "pop", "beaufort", "direction", "comfortText", "dew", "description", "today_maxTemp", "today_minTemp", "today_uv", "today_uvText", "location", "time", "wind"],
+      "notes": {},
+      "note": ""
+    },
+    "hourly": {
+      "home": ["temp", "weather", "pop", "location", "time"],
+      "detail": ["temp", "weather", "pop", "feels", "rh", "wind", "beaufort", "direction", "comfortText", "description", "location", "time"],
+      "notes": {},
+      "note": ""
+    },
+    "week": {
+      "home": ["maxTemp", "minTemp", "weather", "location", "time"],
+      "detail": ["avgTemp", "maxTemp", "minTemp", "maxFeels", "minFeels", "avgRh", "maxComfortText", "minComfortText", "uv", "uvText", "weather", "wind", "beaufort", "direction", "pop12", "pop24", "description", "location", "time"],
+      "notes": {},
+      "note": ""
+    }
+  }
+}
